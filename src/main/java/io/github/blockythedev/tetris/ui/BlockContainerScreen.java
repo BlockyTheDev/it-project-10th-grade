@@ -46,7 +46,7 @@ public class BlockContainerScreen extends JPanel {
      * <b>Initialise the UI of {@link BlockContainerScreen}.</b>
      */
     public void initUI() {
-        final Dimension minimumWindowDimension = new Dimension(GameConstants.COLUMNS * GameConstants.STANDARD_SCREEN_FACTOR, GameConstants.LINES * GameConstants.STANDARD_SCREEN_FACTOR);
+        final Dimension minimumWindowDimension = new Dimension(GameConstants.COLUMNS * GameConstants.SCREEN_FACTOR, GameConstants.LINES * GameConstants.SCREEN_FACTOR);
         setPreferredSize(minimumWindowDimension);
         setLayout(new BorderLayout());
         setFocusable(true);
