@@ -25,8 +25,9 @@ public final class StringConstants {
     public static final String WINDOW_TITLE_EXTENSION_PAUSED = "Paused";
     public static final String WINDOW_TITLE_EXTENSION_GAME_OVER = "Game Over";
     public static final String DIALOG_TITLE_CONFIRM_EXIT = "Exit Program Message Box";
-    public static final String DIALOG_MESSAGE_CONFIRM_EXIT = "Are you sure you want to exit the program?";
+    public static final String DIALOG_TITLE_GAME_INSTRUCTIONS = "Game Instructions";
     public static final String DIALOG_TITLE_GAME_START = "Start Game";
+    public static final String DIALOG_MESSAGE_CONFIRM_EXIT = "Are you sure you want to exit the program?";
     public static final String DIALOG_MESSAGE_GAME_START = "Press to start the game!";
     public static final String DIALOG_MESSAGE_GAME_OVER = "Game Over!\nScore: {0}\nDou you want to play again?";
     public static final String DIALOG_MESSAGE_GAME_INSTRUCTION = "This project is provided for educational purposes only.\n" +

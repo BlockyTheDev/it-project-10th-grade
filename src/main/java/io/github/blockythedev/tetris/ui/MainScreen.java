@@ -15,6 +15,7 @@
  */
 package io.github.blockythedev.tetris.ui;
 
+import io.github.blockythedev.tetris.constants.GameConstants;
 import io.github.blockythedev.tetris.constants.StringConstants;
 import io.github.blockythedev.tetris.logic.GameManager;
 import org.jetbrains.annotations.NotNull;
@@ -80,7 +81,6 @@ public class MainScreen extends JFrame {
         mainOverlayScreen.setVisible(true);
         pack();
         setVisible(true);
-        JOptionPane.showMessageDialog(this, StringConstants.DIALOG_MESSAGE_GAME_INSTRUCTION, StringConstants.DIALOG_TITLE_GAME_START, JOptionPane.INFORMATION_MESSAGE);
         startGame();
     }
 
@@ -88,6 +88,10 @@ public class MainScreen extends JFrame {
      * <b>Start the game.</b>
      */
     public void startGame() {
+        final JTextArea textArea = GameConstants.SCREEN_SIZE_HEIGHT > 1200 ? new JTextArea(StringConstants.DIALOG_MESSAGE_GAME_INSTRUCTION) : new JTextArea(StringConstants.DIALOG_MESSAGE_GAME_INSTRUCTION, 20, 110);
+        textArea.setEditable(false);
+        JOptionPane.showMessageDialog(this, new JScrollPane(textArea), StringConstants.DIALOG_TITLE_GAME_INSTRUCTIONS, JOptionPane.INFORMATION_MESSAGE);
+
         JOptionPane.showMessageDialog(this, StringConstants.DIALOG_MESSAGE_GAME_START, StringConstants.DIALOG_TITLE_GAME_START, JOptionPane.INFORMATION_MESSAGE);
         updateTitle(StringConstants.WINDOW_TITLE_EXTENSION_RUNNING);
         gameManager.getTimer().start();
