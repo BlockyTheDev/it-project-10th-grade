@@ -1,0 +1,132 @@
+/*
+ * Copyright 2023 BlockyTheDev <https://github.com/BlockyTheDev>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+import org.gradle.api.attributes.java.TargetJvmVersion
+
+plugins {
+    id('java')
+    id('idea')
+    id('application')
+    id("org.cadixdev.licenser") version("0.6.1")
+}
+
+String version2 = project.findProperty('project_version')?: '1.0.0-UNKNOWN'
+
+base {
+    setArchivesName(project_name)
+    setVersion(null)
+    setGroup(package_main_class)
+}
+
+idea {
+    module {
+        setDownloadSources(true)
+        setDownloadJavadoc(true)
+    }
+}
+
+repositories {
+//    flatDir dirs: './Lib'
+    mavenCentral()
+}
+
+dependencies {
+    implementation("org.jetbrains:annotations:24.0.0")
+}
+
+javadoc {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
+
+processResources {
+    // Note: https://github.com/gradle/gradle/issues/861
+    outputs.upToDateWhen {false}
+    // Alternative: inputs.property("version2", version2)
+    doFirst {
+        file("$buildDir/resources/main").listFiles().each {
+            it.delete()
+        }
+    }
+
+    expand("GRADLE_VARIABLE_PROJECT_VERSION": version2)
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+//        Info: Not working with Java 8 and AZUL
+//        vendor.set(JvmVendorSpec.AZUL)
+    }
+    withSourcesJar()
+    withJavadocJar()
+}
+
+configurations.configureEach {
+    attributes.attribute(TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE, 8)
+}
+
+compileJava {
+    options.setEncoding("UTF-8")
+//    Info: Release can only be set in >= Java 9
+//    options.release.set(8)
+}
+
+application {
+    mainClass.set(package_main_class + "." + main_class_name)
+}
+
+jar {
+    from("LICENSE") {
+        rename {
+            "${it}_${base.archivesName.get()}"
+        }
+    }
+
+    manifest {
+        attributes([
+                "Main-Class": package_main_class + "." + main_class_name,
+                "Project-Name": project.name,
+                "Project-Version": version2,
+                "Build-Datetime": new Date().format("dd.MM.yyyy HH:mm:ss"),
+                "Build-Toolchain": java.toolchain.languageVersion.get().toString() + " (" + java.toolchain.vendor.get().toString() + ") ",
+                "System-Java-VM": System.getProperty("java.version") + " - " + System.getProperty("java.vm.version") + " (" + System.getProperty("java.vm.vendor") + ")",
+                "Build-OS": System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + System.getProperty("os.arch")
+        ])
+    }
+}
+
+license {
+    File headerFile = project.file("HEADER")
+    setNewLine(false)
+    header(headerFile)
+    properties {
+        year = "2023"
+        name = "BlockyTheDev <https://github.com/BlockyTheDev>"
+    }
+    tasks {
+        gradle {
+            files.from('build.gradle', 'settings.gradle', 'gradle.properties')
+        }
+    }
+}
+
+idea {
+    module {
+        setDownloadSources(true)
+        setDownloadJavadoc(true)
+    }
+}

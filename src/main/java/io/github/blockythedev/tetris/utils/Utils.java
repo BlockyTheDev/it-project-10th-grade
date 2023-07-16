@@ -1,0 +1,113 @@
+/*
+ * Copyright 2023 BlockyTheDev <https://github.com/BlockyTheDev>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package io.github.blockythedev.tetris.utils;
+
+import io.github.blockythedev.tetris.shapes.*;
+import org.jetbrains.annotations.NotNull;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+/**
+ * <b>A class with many utilities needed by the game.</b>
+ */
+public class Utils {
+    private static final Random random = new Random();
+    private static final List<Class<? extends Shape>> shapes = new ArrayList<>();
+
+    static {
+        shapes.add(FourLine.class);
+        shapes.add(LRight.class);
+        shapes.add(LLeft.class);
+        shapes.add(TTurned.class);
+        shapes.add(Square.class);
+        shapes.add(ZLeft.class);
+        shapes.add(ZRight.class);
+    }
+
+    /**
+     * <b>Select a random {@link Shape}.</b>
+     *
+     * @return A random {@link Shape}
+     */
+    @NotNull
+    public static Shape selectRandomShape() {
+        try {
+            return shapes.get(random.nextInt(shapes.size())).getDeclaredConstructor().newInstance();
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * <b>Checks if the row is completely filled.</b>
+     *
+     * @param row The row to check
+     * @return {@code true} if completely filled, else {@code false}
+     */
+    public static boolean isFull(Block[] row) {
+        for (Block block : row) {
+            if (block == null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * <b>Checks if the row is completely empty.</b>
+     *
+     * @param row The row to check
+     * @return {@code true} if completely empty, else {@code false}
+     */
+    public static boolean isEmpty(Block[] row) {
+        for (Block block : row) {
+            if (block != null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * <b>Generates a random {@code float}.</b>
+     *
+     * @return A random float generated with {@link Random#nextFloat()}
+     */
+    public static float randomFloat() {
+        return random.nextFloat();
+    }
+
+    /**
+     * <b>Get the major java version.</b>
+     *
+     * @return The major java version
+     */
+    public static int getJavaMajorVersion() {
+        return Integer.parseInt(System.getProperty("java.version").split("\\.")[0]);
+    }
+
+    /**
+     * <b>Get the operating system name.</b>
+     *
+     * @return The operating system name
+     */
+    public static String getOSName() {
+        return System.getProperty("os.name");
+    }
+}
