@@ -115,14 +115,4 @@ public class MainScreen extends JFrame {
     public MainOverlayScreen getMainOverlayScreen() {
         return mainOverlayScreen;
     }
-
-    /**
-     * <b>Get the instance of the {@link BlockContainerScreen}.</b>
-     *
-     * @return The instance of {@link BlockContainerScreen}
-     */
-    @NotNull
-    public BlockContainerScreen getBlockContainerScreen() {
-        return blockContainerScreen;
-    }
 }
