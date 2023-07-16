@@ -36,7 +36,7 @@ public final class GameConstants {
     /**
      * <b>The percentage, which shows how much of the screen height is allowed to be filled with the content pane height.</b>
      */
-    public static final double MAX_CONTENT_HEIGHT_PERCENTAGE = SCREEN_SIZE_HEIGHT > 1500 ? 0.40 : 0.75;
+    public static final double MAX_CONTENT_HEIGHT_PERCENTAGE = SCREEN_SIZE_HEIGHT >= 1080 ? 0.40 : 0.75;
     /**
      * <b>The factor, which shows the dimension of the game board size to the window size.</b>
      */
