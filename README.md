@@ -16,7 +16,7 @@ All code and assets are licensed under the GPLv3 license, unless otherwise noted
 To compile this project it is needed to have a JDK `8` or higher installed.
 [Adoptium](https://adoptium.net/) has builds for most operating systems. 
 <br>
-To run the game, all you need is a JRE `8` or higher, which can be for example downloaded (here)[https://www.java.com/].
+To run the game, all you need is a JRE `8` or higher, which can be for example downloaded [here](https://www.java.com/).
 For a better user interface experience it is recommended to use a LTS JDK `11` or higher.
 
 ### Run the Game
