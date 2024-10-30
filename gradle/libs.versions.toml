@@ -1,0 +1,13 @@
+[versions]
+jetbrainsAnnotations = "26.0.1"
+
+# Plugins
+licenser = "0.6.1"
+
+[libraries]
+jetbrainsAnnotations = { group = "org.jetbrains", name = "annotations", version.ref = "jetbrainsAnnotations" }
+
+[plugins]
+licenser = { id = "org.cadixdev.licenser", version.ref = "licenser" }
+
+[bundles]
