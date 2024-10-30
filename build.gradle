@@ -1,6 +1,6 @@
 /*
  * School Project - Tetris Game
- * Copyright (C) 2023 BlockyTheDev <https://github.com/BlockyTheDev>
+ * Copyright (C) 2024 BlockyTheDev <https://github.com/BlockyTheDev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ plugins {
     id("org.cadixdev.licenser") version("0.6.1")
 }
 
-String version2 = project.findProperty('project_version')?: '1.0.0-UNKNOWN'
+String version2 = project.findProperty('project_version') ?: '1.0.0-UNKNOWN'
 
 base {
     setArchivesName(project_name)
@@ -56,7 +56,7 @@ javadoc {
 
 processResources {
     // Note: https://github.com/gradle/gradle/issues/861
-    outputs.upToDateWhen {false}
+    outputs.upToDateWhen { false }
     // Alternative: inputs.property("version2", version2)
     doFirst {
         file("$buildDir/resources/main").listFiles().each {
@@ -100,13 +100,13 @@ jar {
 
     manifest {
         attributes([
-                "Main-Class": package_main_class + "." + main_class_name,
-                "Project-Name": project.name,
-                "Project-Version": version2,
-                "Build-Datetime": new Date().format("dd.MM.yyyy HH:mm:ss"),
-                "Build-Toolchain": java.toolchain.languageVersion.get().toString() + " (" + java.toolchain.vendor.get().toString() + ") ",
-                "System-Java-VM": System.getProperty("java.version") + " - " + System.getProperty("java.vm.version") + " (" + System.getProperty("java.vm.vendor") + ")",
-                "Build-OS": System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + System.getProperty("os.arch")
+            "Main-Class"     : package_main_class + "." + main_class_name,
+            "Project-Name"   : project.name,
+            "Project-Version": version2,
+            "Build-Datetime" : new Date().format("dd.MM.yyyy HH:mm:ss"),
+            "Build-Toolchain": java.toolchain.languageVersion.get().toString() + " (" + java.toolchain.vendor.get().toString() + ") ",
+            "System-Java-VM" : System.getProperty("java.version") + " - " + System.getProperty("java.vm.version") + " (" + System.getProperty("java.vm.vendor") + ")",
+            "Build-OS"       : System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + System.getProperty("os.arch")
         ])
     }
 }
@@ -116,7 +116,7 @@ license {
     setNewLine(false)
     header(headerFile)
     properties {
-        year = "2023"
+        year = "2024"
         name = "BlockyTheDev <https://github.com/BlockyTheDev>"
     }
     tasks {

@@ -1,6 +1,6 @@
 /*
  * School Project - Tetris Game
- * Copyright (C) 2023 BlockyTheDev <https://github.com/BlockyTheDev>
+ * Copyright (C) 2024 BlockyTheDev <https://github.com/BlockyTheDev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,13 +20,17 @@ package io.github.blockythedev.tetris.ui;
 import io.github.blockythedev.tetris.constants.GameConstants;
 import io.github.blockythedev.tetris.constants.StringConstants;
 import io.github.blockythedev.tetris.logic.GameManager;
-import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.MessageFormat;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * <b>This class contains the main screen.</b>
@@ -53,7 +57,8 @@ public class MainScreen extends JFrame {
     public void initUI() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
+                 UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
 

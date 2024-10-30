@@ -1,6 +1,6 @@
 /*
  * School Project - Tetris Game
- * Copyright (C) 2023 BlockyTheDev <https://github.com/BlockyTheDev>
+ * Copyright (C) 2024 BlockyTheDev <https://github.com/BlockyTheDev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,9 +19,8 @@ package io.github.blockythedev.tetris.shapes;
 
 import io.github.blockythedev.tetris.utils.Block;
 import io.github.blockythedev.tetris.utils.Rotation;
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Map;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * <b>Representing the {@code Z} shape opened to left.</b>

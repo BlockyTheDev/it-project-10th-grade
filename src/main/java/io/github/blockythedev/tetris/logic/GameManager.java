@@ -1,6 +1,6 @@
 /*
  * School Project - Tetris Game
- * Copyright (C) 2023 BlockyTheDev <https://github.com/BlockyTheDev>
+ * Copyright (C) 2024 BlockyTheDev <https://github.com/BlockyTheDev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,20 +21,19 @@ import io.github.blockythedev.tetris.constants.GameConstants;
 import io.github.blockythedev.tetris.constants.StringConstants;
 import io.github.blockythedev.tetris.ui.MainScreen;
 import io.github.blockythedev.tetris.utils.Stats;
+import javax.swing.Timer;
 import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
 
 /**
  * <b>This class contains all general code needed for running the game.</b>
  */
 public class GameManager {
-    private boolean paused;
-    private boolean gameOver;
-    private Timer timer;
     private final Stats stats;
     private final Board boardInstance;
     private final MainScreen mainScreen;
+    private boolean paused;
+    private boolean gameOver;
+    private Timer timer;
 
     /**
      * <b>The constructor of the class for managing all central instances.</b>

@@ -1,6 +1,6 @@
 /*
  * School Project - Tetris Game
- * Copyright (C) 2023 BlockyTheDev <https://github.com/BlockyTheDev>
+ * Copyright (C) 2024 BlockyTheDev <https://github.com/BlockyTheDev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  */
 package io.github.blockythedev.tetris.constants;
 
-import java.awt.*;
+import java.awt.Toolkit;
 
 /**
  * <b>A final class to store some game constants.</b>
@@ -44,11 +44,11 @@ public final class GameConstants {
      */
     public static final int SCREEN_FACTOR = (int) (SCREEN_SIZE_HEIGHT * MAX_CONTENT_HEIGHT_PERCENTAGE) / LINES;
     /**
-     * <b>The interval, in which the game blocks will fall down.</b>
-     */
-    public static final int INTERVAL_FALLING_BLOCK_MS = 1000;
-    /**
      * <b>The factor, which shows the dimension of the normal text size and the text size in the window.</b>
      */
     public static final float FONT_FACTOR = SCREEN_FACTOR * 0.05F;
+    /**
+     * <b>The interval, in which the game blocks will fall down.</b>
+     */
+    public static final int INTERVAL_FALLING_BLOCK_MS = 1000;
 }

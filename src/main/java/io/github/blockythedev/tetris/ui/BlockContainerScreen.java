@@ -1,6 +1,6 @@
 /*
  * School Project - Tetris Game
- * Copyright (C) 2023 BlockyTheDev <https://github.com/BlockyTheDev>
+ * Copyright (C) 2024 BlockyTheDev <https://github.com/BlockyTheDev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,10 +24,11 @@ import io.github.blockythedev.tetris.logic.GameManager;
 import io.github.blockythedev.tetris.logic.KeyManager;
 import io.github.blockythedev.tetris.shapes.Shape;
 import io.github.blockythedev.tetris.utils.Block;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import javax.swing.JPanel;
 import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
-import java.awt.*;
 
 /**
  * <b>This class contains the screen containing the drawn shapes.</b>
@@ -83,8 +84,8 @@ public class BlockContainerScreen extends JPanel {
     /**
      * <b>Paint the board.</b>
      * <p>
-     *     Note: Do NOT call this by hand, use {@link #repaint()} instead.
-     *     This is automatically called on things like window dimension change.
+     * Note: Do NOT call this by hand, use {@link #repaint()} instead.
+     * This is automatically called on things like window dimension change.
      * </p>
      *
      * @param graphics The {@link Graphics} context in which to paint

@@ -1,6 +1,6 @@
 /*
  * School Project - Tetris Game
- * Copyright (C) 2023 BlockyTheDev <https://github.com/BlockyTheDev>
+ * Copyright (C) 2024 BlockyTheDev <https://github.com/BlockyTheDev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,10 +18,9 @@
 package io.github.blockythedev.tetris.logic;
 
 import io.github.blockythedev.tetris.constants.StringConstants;
-import org.jetbrains.annotations.NotNull;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * <b>The class for listening for key inputs.</b>
@@ -41,8 +40,8 @@ public class KeyManager implements KeyListener {
     /**
      * <b>Invoked when an key is pressed.</b>
      * <p>
-     *     Note: Do NOT call this by hand.
-     *     This is automatically called, after every key press.
+     * Note: Do NOT call this by hand.
+     * This is automatically called, after every key press.
      * </p>
      *
      * @param e The {@link KeyEvent}

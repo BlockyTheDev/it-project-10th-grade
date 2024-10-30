@@ -1,6 +1,6 @@
 /*
  * School Project - Tetris Game
- * Copyright (C) 2023 BlockyTheDev <https://github.com/BlockyTheDev>
+ * Copyright (C) 2024 BlockyTheDev <https://github.com/BlockyTheDev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,10 +17,9 @@
  */
 package io.github.blockythedev.tetris.logic;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * <b>A class for timer actions.</b>
@@ -40,8 +39,8 @@ public class TetrisTimerListener implements ActionListener {
     /**
      * <b>Invoked when an action occurs.</b>
      * <p>
-     *     Note: Do NOT call this by hand.
-     *     This is automatically called, after every timer cycle.
+     * Note: Do NOT call this by hand.
+     * This is automatically called, after every timer cycle.
      * </p>
      *
      * @param e The {@link ActionListener}
