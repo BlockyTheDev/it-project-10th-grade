@@ -1,39 +1,36 @@
 <div style="text-align: center;">
 
-# Tetris Game - School Project
-Developed by BlockyTheDev and two other classmates as 10th grade school project.
+# School Project - Tetris Game
+<b>This project is published for educational purposes only.</b>
 <br>
-This project is provided for educational purposes only.
+The first version was developed by myself and two other classmates as a 10th grade school project.
 
 </div>
 
-## License
-[![License: GPLv3](https://img.shields.io/badge/License-GPLv3-orange.svg)](LICENSE)
+## Legal
+'Tetris' is a registered trademark of The Tetris Holding, LLC, licensed to The Tetris Company, Inc.
 <br>
-All code and assets are licensed under the GPLv3 license, unless otherwise noted in [license file](LICENSE).
-
-## Compile and Run
-To compile this project it is needed to have a JDK `8` or higher installed.
-[Adoptium](https://adoptium.net/) has builds for most operating systems. 
+This project is not affiliated with nor endorsed or supported by the Tetris Company, Inc and Tetris Holding, LLC.
 <br>
-To run the game, all you need is a JRE `8` or higher, which can be for example downloaded [here](https://www.java.com/).
-For a better user interface experience it is recommended to use a LTS JDK `11` or higher.
 
-### Run the Game
-To run this game, download the `Tetris.jar` of the <u>latest</u> release.
-The Releases are located [here](https://github.com/BlockyTheDev/school-project-tetris/releases).
+## Licence
+[![Code - License: GPLv3](https://img.shields.io/badge/License-GPLv3-orange.svg)](LICENSE)
+<br>
+The code in this project is published under the GPLv3 licence, unless otherwise stated in the [licence file](LICENSE).
 
+### Run the game
+To run this project you need to have an JRE or OpenJDK 8 or higher installed.
+OpenJDK builds for most operating systems can be downloaded from [here](https://www.azul.com/downloads).
+<br>
+To run this game, download the `.jar` file from the <u>latest</u> release.
+The Releases can be found [here](https://github.com/BlockyTheDev/school-project-tetris/releases).
 
-### Compile
-To compile this game, you need JDK 8 or higher and an internet connection.
+## Compile the game
+To compile this project you need to have an OpenJDK 8 or higher installed.
+[Azul - Zulu](https://www.azul.com/downloads) has builds for most operating systems.
+<b>
 
-<u>Clone</u> this repo, run `./gradlew build` from your terminal.
-You can find the compiled jar in the project root's `build/libs` directory.
+As a first step, clone or download this repository and run `./gradlew build` from your terminal.
+You will find the compiled JAR in the `build/libs` directory of the project root.
 
 To get a full list of tasks, run `./gradlew tasks`.
-
-
-## Legal
-'Tetris' is the registered trademark of The Tetris Holding, LLC, licensed to The Tetris Company, Inc.
-<br>
-This project is not affiliated with nor endorsed by the Tetris Company, Inc and Tetris Holding, LLC.
