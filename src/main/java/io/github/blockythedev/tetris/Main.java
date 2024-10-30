@@ -1,6 +1,6 @@
 /*
  * School Project - Tetris Game
- * Copyright (C) 2023 BlockyTheDev <https://github.com/BlockyTheDev>
+ * Copyright (C) 2024 BlockyTheDev <https://github.com/BlockyTheDev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,10 +19,9 @@ package io.github.blockythedev.tetris;
 
 import io.github.blockythedev.tetris.logic.GameManager;
 import io.github.blockythedev.tetris.utils.Utils;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.GraphicsEnvironment;
 import java.util.logging.Logger;
+import javax.swing.SwingUtilities;
 
 /**
  * <b>The main class of this project.</b>
@@ -33,8 +32,8 @@ public class Main {
     /**
      * <b>The main class run, when the java application is started.</b>
      * <p>
-     *     Note: Do NOT call this by hand.
-     *     This is automatically called, when the jar application is started..
+     * Note: Do NOT call this by hand.
+     * This is automatically called, when the jar application is started..
      * </p>
      *
      * @param args The startup arguments

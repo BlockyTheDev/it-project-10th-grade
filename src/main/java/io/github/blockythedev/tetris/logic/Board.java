@@ -1,6 +1,6 @@
 /*
  * School Project - Tetris Game
- * Copyright (C) 2023 BlockyTheDev <https://github.com/BlockyTheDev>
+ * Copyright (C) 2024 BlockyTheDev <https://github.com/BlockyTheDev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,14 +24,13 @@ import io.github.blockythedev.tetris.utils.Block;
 import io.github.blockythedev.tetris.utils.Rotation;
 import io.github.blockythedev.tetris.utils.Stats;
 import io.github.blockythedev.tetris.utils.Utils;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.JOptionPane;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * <b>A Tetris board.</b>
@@ -161,10 +160,10 @@ public class Board {
     /**
      * <b>Check if the shape is placeable at this location</b>
      *
-     * @param shape       The {@link Shape} instance
+     * @param shape The {@link Shape} instance
      * @param newRotation The {@link Rotation} to use for checking
-     * @param newPosX     The X-position to check
-     * @param newPosY     The Y-position to check
+     * @param newPosX The X-position to check
+     * @param newPosY The Y-position to check
      * @return {@code true] if the shape is placeable at this location, else {@code false}
      */
     private boolean isPlaceable(@NotNull final Shape shape, @NotNull final Rotation newRotation, final int newPosX, final int newPosY) {

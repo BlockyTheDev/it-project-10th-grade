@@ -1,6 +1,6 @@
 /*
  * School Project - Tetris Game
- * Copyright (C) 2023 BlockyTheDev <https://github.com/BlockyTheDev>
+ * Copyright (C) 2024 BlockyTheDev <https://github.com/BlockyTheDev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,13 +17,19 @@
  */
 package io.github.blockythedev.tetris.utils;
 
-import io.github.blockythedev.tetris.shapes.*;
-import org.jetbrains.annotations.NotNull;
-
+import io.github.blockythedev.tetris.shapes.FourLine;
+import io.github.blockythedev.tetris.shapes.LLeft;
+import io.github.blockythedev.tetris.shapes.LRight;
+import io.github.blockythedev.tetris.shapes.Shape;
+import io.github.blockythedev.tetris.shapes.Square;
+import io.github.blockythedev.tetris.shapes.TTurned;
+import io.github.blockythedev.tetris.shapes.ZLeft;
+import io.github.blockythedev.tetris.shapes.ZRight;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * <b>A class with many utilities needed by the game.</b>
@@ -51,7 +57,8 @@ public class Utils {
     public static Shape selectRandomShape() {
         try {
             return shapes.get(random.nextInt(shapes.size())).getDeclaredConstructor().newInstance();
-        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException |
+                 InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }

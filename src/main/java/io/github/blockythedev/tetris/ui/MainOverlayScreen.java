@@ -1,6 +1,6 @@
 /*
  * School Project - Tetris Game
- * Copyright (C) 2023 BlockyTheDev <https://github.com/BlockyTheDev>
+ * Copyright (C) 2024 BlockyTheDev <https://github.com/BlockyTheDev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,11 +20,13 @@ package io.github.blockythedev.tetris.ui;
 import io.github.blockythedev.tetris.constants.GameConstants;
 import io.github.blockythedev.tetris.constants.StringConstants;
 import io.github.blockythedev.tetris.logic.GameManager;
-import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Font;
 import java.text.MessageFormat;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * <b>This class contains the overlay for the main screen.</b>

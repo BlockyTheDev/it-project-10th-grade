@@ -1,6 +1,6 @@
 /*
  * School Project - Tetris Game
- * Copyright (C) 2023 BlockyTheDev <https://github.com/BlockyTheDev>
+ * Copyright (C) 2024 BlockyTheDev <https://github.com/BlockyTheDev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,9 +17,8 @@
  */
 package io.github.blockythedev.tetris.utils;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.awt.Color;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * <b>Represents a block with color.</b>
