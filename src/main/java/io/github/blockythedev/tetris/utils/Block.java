@@ -21,13 +21,13 @@ import java.awt.Color;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * <b>Represents a block with color.</b>
+ * Represents a block with color.
  */
 public class Block {
     private final Color color;
 
     /**
-     * <b>Create a block representing a colored block.</b>
+     * Create a block representing a colored block.
      *
      * @param color The {@link Color}
      */
@@ -36,7 +36,7 @@ public class Block {
     }
 
     /**
-     * <b>Get the color of the block.</b>
+     * Get the color of the block.
      *
      * @return The {@link Color}
      */

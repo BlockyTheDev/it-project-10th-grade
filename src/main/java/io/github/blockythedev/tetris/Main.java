@@ -24,13 +24,22 @@ import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 
 /**
- * <b>The main class of this project.</b>
+ * The main class of this project.
  */
 public class Main {
     private static final Logger logger = Logger.getLogger(Main.class.getName());
 
     /**
-     * <b>The main class run, when the java application is started.</b>
+     * Prevents the constructor from being called.
+     *
+     * @throws UnsupportedOperationException Thrown, when the constructor gets called.
+     */
+    private Main() {
+        throw new UnsupportedOperationException("Cannot instantiate class");
+    }
+
+    /**
+     * The main class run, when the java application is started.
      * <p>
      * Note: Do NOT call this by hand.
      * This is automatically called, when the jar application is started..

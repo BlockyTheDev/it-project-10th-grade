@@ -23,7 +23,7 @@ import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * <b>Representing the {@code Square} shape.</b>
+ * Representing the {@code Square} shape.
  */
 public class Square extends Shape {
     private static final Map<Rotation, Block[][]> shapeList;
@@ -39,7 +39,14 @@ public class Square extends Shape {
     }
 
     /**
-     * <b>Check if the shape can be rotated or not.</b>
+     * Constructs the class {@link Square}.
+     */
+    public Square() {
+        // default constructor
+    }
+
+    /**
+     * Check if the shape can be rotated or not.
      *
      * @return {@code true} because the {@link Square} shape is not rotatable
      */
@@ -48,7 +55,7 @@ public class Square extends Shape {
     }
 
     /**
-     * <b>Get the rotated shape.</b>
+     * Get the rotated shape.
      *
      * @param rotation The {@link Rotation}
      * @return The rotated Shape

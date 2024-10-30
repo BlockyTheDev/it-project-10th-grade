@@ -31,13 +31,14 @@ import javax.swing.JPanel;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * <b>This class contains the screen containing the drawn shapes.</b>
+ * This class contains the screen containing the drawn shapes.
  */
 public class BlockContainerScreen extends JPanel {
+    /** The game manager. */
     private final GameManager gameManager;
 
     /**
-     * <b>Create an instance of the {@link BlockContainerScreen} class.</b>
+     * Create an instance of the {@link BlockContainerScreen} class.
      *
      * @param gameManager A {@link GameManager} instance
      */
@@ -46,7 +47,7 @@ public class BlockContainerScreen extends JPanel {
     }
 
     /**
-     * <b>Initialise the UI of {@link BlockContainerScreen}.</b>
+     * Initialise the UI of {@link BlockContainerScreen}.
      */
     public void initUI() {
         final Dimension minimumWindowDimension = new Dimension(GameConstants.COLUMNS * GameConstants.SCREEN_FACTOR, GameConstants.LINES * GameConstants.SCREEN_FACTOR);
@@ -57,7 +58,7 @@ public class BlockContainerScreen extends JPanel {
     }
 
     /**
-     * <b>Draw a block with shadow.</b>
+     * Draw a block with shadow.
      *
      * @param graphics The {@link Graphics} context in which to paint
      * @param block The {@link Block} to draw
@@ -82,7 +83,7 @@ public class BlockContainerScreen extends JPanel {
     }
 
     /**
-     * <b>Paint the board.</b>
+     * Paint the board.
      * <p>
      * Note: Do NOT call this by hand, use {@link #repaint()} instead.
      * This is automatically called on things like window dimension change.

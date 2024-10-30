@@ -33,7 +33,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * <b>A Tetris board.</b>
+ * A Tetris board.
  */
 public class Board {
     private final GameManager gameManager;
@@ -44,7 +44,9 @@ public class Board {
     private Rotation rotation;
 
     /**
-     * <b>Create a Tetris board.</b>
+     * Create a Tetris board.
+     *
+     * @param gameManager The game manager.
      */
     public Board(@NotNull final GameManager gameManager) {
         this.gameManager = gameManager;
@@ -52,7 +54,7 @@ public class Board {
     }
 
     /**
-     * <b>Removes full lines of the game board.</b>
+     * Removes full lines of the game board.
      */
     private void removeFullLines() {
         final Stats stats = gameManager.getStats();
@@ -76,7 +78,7 @@ public class Board {
     }
 
     /**
-     * <b>Sets a new shape and checks for game-over state.</b>
+     * Sets a new shape and checks for game-over state.
      */
     private void chooseNewShape() {
         currentShape = Utils.selectRandomShape();
@@ -90,7 +92,7 @@ public class Board {
     }
 
     /**
-     * <b>Inserts the current shape into the board if falling is finished.</b>
+     * Inserts the current shape into the board if falling is finished.
      */
     private void finishFalling() {
         Block[][] rotatedShape = currentShape.getShape(rotation);
@@ -106,7 +108,7 @@ public class Board {
     }
 
     /**
-     * <b>Moves the current shape down by one line.</b>
+     * Moves the current shape down by one line.
      */
     public void fallOneLineDown() {
         if (isPlaceable(currentShape, rotation, posX, posY + 1)) {
@@ -117,7 +119,7 @@ public class Board {
     }
 
     /**
-     * <b>Rotate the current shape.</b>
+     * Rotate the current shape.
      *
      * @param clockwise {@code true} if the rotation direction is clockwise, else {@code false}
      */
@@ -127,7 +129,7 @@ public class Board {
     }
 
     /**
-     * <b>Move the current shape on the X-axis.</b>
+     * Move the current shape on the X-axis.
      *
      * @param right {@code true} if the direction is right, else {@code false}
      */
@@ -141,7 +143,7 @@ public class Board {
     }
 
     /**
-     * <b>Drops the shape down.</b>
+     * Drops the shape down.
      */
     public void dropShapeDown() {
         final Block[][] rotatedShape = currentShape.getShape(rotation);
@@ -158,7 +160,7 @@ public class Board {
     }
 
     /**
-     * <b>Check if the shape is placeable at this location</b>
+     * Check if the shape is placeable at this location
      *
      * @param shape The {@link Shape} instance
      * @param newRotation The {@link Rotation} to use for checking
@@ -182,7 +184,7 @@ public class Board {
     }
 
     /**
-     * <b>Make a bord update.</b>
+     * Make a bord update.
      */
     public void update() {
         if (gameManager.isPaused() || gameManager.isGameOver()) {
@@ -200,7 +202,7 @@ public class Board {
     }
 
     /**
-     * <b>Clears the board.</b>
+     * Clears the board.
      */
     private void clearBoard() {
         for (Block[] blocks : gameBoard) {
@@ -209,7 +211,7 @@ public class Board {
     }
 
     /**
-     * <b>Logic to run, when the game enters a game over state.</b>
+     * Logic to run, when the game enters a game over state.
      */
     private void doGamerOverLogic() {
         gameManager.getTimer().stop();
@@ -235,7 +237,7 @@ public class Board {
     }
 
     /**
-     * <b>Reset the board.</b>
+     * Reset the board.
      */
     public void reset() {
         currentShape = null;
@@ -246,7 +248,7 @@ public class Board {
     }
 
     /**
-     * <b>Get the game board.</b>
+     * Get the game board.
      *
      * @return The game board
      */
@@ -256,7 +258,7 @@ public class Board {
     }
 
     /**
-     * <b>Get the current shape.</b>
+     * Get the current shape.
      *
      * @return The shape
      */
@@ -266,7 +268,7 @@ public class Board {
     }
 
     /**
-     * <b>Get the X-position of the current shape.</b>
+     * Get the X-position of the current shape.
      *
      * @return The x-position
      */
@@ -275,7 +277,7 @@ public class Board {
     }
 
     /**
-     * <b>Get the Y-position of the current shape.</b>
+     * Get the Y-position of the current shape.
      *
      * @return The Y-position
      */
@@ -284,7 +286,7 @@ public class Board {
     }
 
     /**
-     * <b>Get the {@link Rotation}} of the current shape.</b>
+     * Get the {@link Rotation}} of the current shape.
      *
      * @return The rotation
      */

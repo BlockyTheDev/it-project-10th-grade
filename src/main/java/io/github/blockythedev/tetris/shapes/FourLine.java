@@ -20,10 +20,11 @@ package io.github.blockythedev.tetris.shapes;
 import io.github.blockythedev.tetris.utils.Block;
 import io.github.blockythedev.tetris.utils.Rotation;
 import java.util.Map;
+import io.github.blockythedev.tetris.utils.Stats;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * <b>Representing the {@code Four-Line} shape.</b>
+ * Representing the {@code Four-Line} shape.
  */
 public class FourLine extends Shape {
     private static final Map<Rotation, Block[][]> shapeList;
@@ -39,7 +40,14 @@ public class FourLine extends Shape {
     }
 
     /**
-     * <b>Get the rotated shape.</b>
+     * Constructs the class {@link FourLine}.
+     */
+    public FourLine() {
+        // default constructor
+    }
+
+    /**
+     * Get the rotated shape.
      *
      * @param rotation The {@link Rotation}
      * @return The rotated Shape

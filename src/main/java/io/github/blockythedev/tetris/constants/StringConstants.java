@@ -18,20 +18,32 @@
 package io.github.blockythedev.tetris.constants;
 
 /**
- * <b>A final class containing all game related Strings.</b>
+ * A final class containing all game related Strings.
  */
 public final class StringConstants {
+    /** Text: {@literal WINDOW_TITLE} */
     public static final String WINDOW_TITLE = "Tetris - {0}";
+    /** Text: {@literal WINDOW_TITLE_EXTENSION_READY} */
     public static final String WINDOW_TITLE_EXTENSION_READY = "Ready";
+    /** Text: {@literal WINDOW_TITLE_EXTENSION_RUNNING} */
     public static final String WINDOW_TITLE_EXTENSION_RUNNING = "Running";
+    /** Text: {@literal WINDOW_TITLE_EXTENSION_PAUSED} */
     public static final String WINDOW_TITLE_EXTENSION_PAUSED = "Paused";
+    /** Text: {@literal WINDOW_TITLE_EXTENSION_GAME_OVER} */
     public static final String WINDOW_TITLE_EXTENSION_GAME_OVER = "Game Over";
+    /** Text: {@literal DIALOG_TITLE_CONFIRM_EXIT} */
     public static final String DIALOG_TITLE_CONFIRM_EXIT = "Exit Program Message Box";
+    /** Text: {@literal DIALOG_TITLE_GAME_INSTRUCTIONS} */
     public static final String DIALOG_TITLE_GAME_INSTRUCTIONS = "Game Instructions";
+    /** Text: {@literal DIALOG_TITLE_GAME_START} */
     public static final String DIALOG_TITLE_GAME_START = "Start Game";
+    /** Text: {@literal DIALOG_MESSAGE_CONFIRM_EXIT} */
     public static final String DIALOG_MESSAGE_CONFIRM_EXIT = "Are you sure you want to exit the program?";
+    /** Text: {@literal DIALOG_MESSAGE_GAME_START} */
     public static final String DIALOG_MESSAGE_GAME_START = "Press to start the game!";
+    /** Text: {@literal DIALOG_MESSAGE_GAME_OVER} */
     public static final String DIALOG_MESSAGE_GAME_OVER = "Game Over!\nScore: {0}\nDou you want to play again?";
+    /** Text: {@literal DIALOG_MESSAGE_GAME_INSTRUCTION} */
     public static final String DIALOG_MESSAGE_GAME_INSTRUCTION = "This project is provided for educational purposes only.\n" +
             "'Tetris' is the registered trademark of The Tetris Holding, LLC, licensed to The Tetris Company, Inc.\n" +
             "This project is not affiliated with nor endorsed by the Tetris Company, Inc and Tetris Holding, LLC.\n\n\n" +
@@ -58,5 +70,15 @@ public final class StringConstants {
             "   - Your final score will be displayed, and you will have the option to play again.\n\n" +
             "Remember, the key to success is to clear as many lines as possible and aim for a high score!\n\n" +
             "Enjoy playing your self-coded Tetris game!";
+    /** Text: {@literal LABEL_TEXT_SCORE} */
     public static final String LABEL_TEXT_SCORE = "Score: {0}";
+
+    /**
+     * Prevents the constructor from being called.
+     *
+     * @throws UnsupportedOperationException Thrown, when the constructor gets called.
+     */
+    private StringConstants() {
+        throw new UnsupportedOperationException("Cannot instantiate class");
+    }
 }
