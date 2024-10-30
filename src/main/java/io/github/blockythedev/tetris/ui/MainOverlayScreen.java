@@ -29,14 +29,16 @@ import javax.swing.SwingConstants;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * <b>This class contains the overlay for the main screen.</b>
+ * This class contains the overlay for the main screen.
  */
 public class MainOverlayScreen extends JPanel {
+    /** The game manager. */
     private final GameManager gameManager;
+    /** The screen label with the game statistics. */
     private final JLabel statsText;
 
     /**
-     * <b>The constructor for the {@link MainOverlayScreen} UI.</b>
+     * The constructor for the {@link MainOverlayScreen} UI.
      *
      * @param gameManager An {@link GameManager} instance
      */
@@ -46,7 +48,7 @@ public class MainOverlayScreen extends JPanel {
     }
 
     /**
-     * <b>Initialise the UI of {@link MainOverlayScreen}.</b>
+     * Initialise the UI of {@link MainOverlayScreen}.
      */
     public void initUI() {
         setLayout(new BorderLayout());
@@ -59,7 +61,7 @@ public class MainOverlayScreen extends JPanel {
     }
 
     /**
-     * <b>Refreshes the stats text.</b>
+     * Refreshes the stats text.
      */
     public void updateStatsText() {
         statsText.setText(MessageFormat.format(StringConstants.LABEL_TEXT_SCORE, gameManager.getStats().getRemovedLines()));

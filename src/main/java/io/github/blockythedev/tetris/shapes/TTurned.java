@@ -23,7 +23,7 @@ import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * <b>Representing the {@code mirrored T} shape.</b>
+ * Representing the {@code mirrored T} shape.
  */
 public class TTurned extends Shape {
     private static final Map<Rotation, Block[][]> shapeList;
@@ -39,7 +39,14 @@ public class TTurned extends Shape {
     }
 
     /**
-     * <b>Get the rotated shape.</b>
+     * Constructs the class {@link TTurned}.
+     */
+    public TTurned() {
+        // default constructor
+    }
+
+    /**
+     * Get the rotated shape.
      *
      * @param rotation The {@link Rotation}
      * @return The rotated Shape

@@ -23,7 +23,7 @@ import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * <b>Representing the {@code L} shape opened to left.</b>
+ * Representing the {@code L} shape opened to left.
  */
 public class LLeft extends Shape {
     private static final Map<Rotation, Block[][]> shapeList;
@@ -39,7 +39,14 @@ public class LLeft extends Shape {
     }
 
     /**
-     * <b>Get the rotated shape.</b>
+     * Constructs the class {@link LLeft}.
+     */
+    public LLeft() {
+        // default constructor
+    }
+
+    /**
+     * Get the rotated shape.
      *
      * @param rotation The {@link Rotation}
      * @return The rotated Shape

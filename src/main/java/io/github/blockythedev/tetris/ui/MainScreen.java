@@ -33,15 +33,18 @@ import javax.swing.UnsupportedLookAndFeelException;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * <b>This class contains the main screen.</b>
+ * This class contains the main screen.
  */
 public class MainScreen extends JFrame {
+    /** The game manager. */
     private final GameManager gameManager;
+    /** The screen with the container, where the shapes are drawn. */
     private final BlockContainerScreen blockContainerScreen;
+    /** The main overlay screen. */
     private final MainOverlayScreen mainOverlayScreen;
 
     /**
-     * <b>The constructor for the {@link MainScreen} UI.</b>
+     * The constructor for the {@link MainScreen} UI.
      *
      * @param gameManager An {@link GameManager} instance
      */
@@ -52,7 +55,7 @@ public class MainScreen extends JFrame {
     }
 
     /**
-     * <b>Initialise the UI of {@link MainScreen}.</b>
+     * Initialise the UI of {@link MainScreen}.
      */
     public void initUI() {
         try {
@@ -92,7 +95,7 @@ public class MainScreen extends JFrame {
     }
 
     /**
-     * <b>Start the game.</b>
+     * Start the game.
      */
     public void startGame() {
         final JTextArea textArea = GameConstants.SCREEN_SIZE_HEIGHT >= 1080 ? new JTextArea(StringConstants.DIALOG_MESSAGE_GAME_INSTRUCTION) : new JTextArea(StringConstants.DIALOG_MESSAGE_GAME_INSTRUCTION, 20, 70);
@@ -105,7 +108,7 @@ public class MainScreen extends JFrame {
     }
 
     /**
-     * <b>Updates the window title with the specific extension.</b>
+     * Updates the window title with the specific extension.
      *
      * @param extension The title extension replacing the placeholder in {@link StringConstants#WINDOW_TITLE}
      */
@@ -114,7 +117,7 @@ public class MainScreen extends JFrame {
     }
 
     /**
-     * <b>Get the instance of the {@link MainOverlayScreen}.</b>
+     * Get the instance of the {@link MainOverlayScreen}.
      *
      * @return The instance of {@link MainOverlayScreen}
      */

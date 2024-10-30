@@ -32,7 +32,7 @@ import java.util.Random;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * <b>A class with many utilities needed by the game.</b>
+ * A class with many utilities needed by the game.
  */
 public class Utils {
     private static final Random random = new Random();
@@ -49,7 +49,16 @@ public class Utils {
     }
 
     /**
-     * <b>Select a random {@link Shape}.</b>
+     * Prevents the constructor from being called.
+     *
+     * @throws UnsupportedOperationException Thrown, when the constructor gets called.
+     */
+    private Utils() {
+        throw new UnsupportedOperationException("Cannot instantiate class");
+    }
+
+    /**
+     * Select a random {@link Shape}.
      *
      * @return A random {@link Shape}
      */
@@ -64,7 +73,7 @@ public class Utils {
     }
 
     /**
-     * <b>Checks if the row is completely filled.</b>
+     * Checks if the row is completely filled.
      *
      * @param row The row to check
      * @return {@code true} if completely filled, else {@code false}
@@ -79,7 +88,7 @@ public class Utils {
     }
 
     /**
-     * <b>Checks if the row is completely empty.</b>
+     * Checks if the row is completely empty.
      *
      * @param row The row to check
      * @return {@code true} if completely empty, else {@code false}
@@ -94,7 +103,7 @@ public class Utils {
     }
 
     /**
-     * <b>Generates a random {@code float}.</b>
+     * Generates a random {@code float}.
      *
      * @return A random float generated with {@link Random#nextFloat()}
      */
@@ -103,7 +112,7 @@ public class Utils {
     }
 
     /**
-     * <b>Get the major java version.</b>
+     * Get the major java version.
      *
      * @return The major java version
      */
@@ -112,7 +121,7 @@ public class Utils {
     }
 
     /**
-     * <b>Get the operating system name.</b>
+     * Get the operating system name.
      *
      * @return The operating system name
      */

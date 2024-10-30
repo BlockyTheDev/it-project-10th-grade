@@ -20,7 +20,7 @@ package io.github.blockythedev.tetris.utils;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * <b>Representing a rotation.</b>
+ * Representing a rotation.
  */
 public enum Rotation {
     /**
@@ -41,7 +41,7 @@ public enum Rotation {
     LEFT;
 
     /**
-     * <b>Get the previous {@link Rotation} in clockwise direction.</b>
+     * Get the previous {@link Rotation} in clockwise direction.
      *
      * @return The previous {@link Rotation}
      */
@@ -52,7 +52,7 @@ public enum Rotation {
     }
 
     /**
-     * <b>Get the next {@link Rotation} in clockwise direction.</b>
+     * Get the next {@link Rotation} in clockwise direction.
      *
      * @return The next {@link Rotation}
      */

@@ -23,13 +23,13 @@ import java.awt.event.KeyListener;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * <b>The class for listening for key inputs.</b>
+ * The class for listening for key inputs.
  */
 public class KeyManager implements KeyListener {
     private final GameManager gameManager;
 
     /**
-     * <b>The constructor for the {@link KeyManager} listener.</b>
+     * The constructor for the {@link KeyManager} listener.
      *
      * @param gameManager An {@link GameManager} instance
      */
@@ -38,7 +38,7 @@ public class KeyManager implements KeyListener {
     }
 
     /**
-     * <b>Invoked when an key is pressed.</b>
+     * Invoked when an key is pressed.
      * <p>
      * Note: Do NOT call this by hand.
      * This is automatically called, after every key press.

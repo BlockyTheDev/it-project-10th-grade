@@ -20,35 +20,44 @@ package io.github.blockythedev.tetris.constants;
 import java.awt.Toolkit;
 
 /**
- * <b>A final class to store some game constants.</b>
+ * A final class to store some game constants.
  */
 public final class GameConstants {
     /**
-     * <b>The number of block columns of the game board.</b>
+     * The number of block columns of the game board.
      */
     public static final int COLUMNS = 10;
     /**
-     * <b>The number of block lines of the game board.</b>
+     * The number of block lines of the game board.
      */
     public static final int LINES = 20;
     /**
-     * <b>The screen size height.</b>
+     * The screen size height.
      */
     public static final double SCREEN_SIZE_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
     /**
-     * <b>The percentage, which shows how much of the screen height is allowed to be filled with the content pane height.</b>
+     * The percentage, which shows how much of the screen height is allowed to be filled with the content pane height.
      */
     public static final double MAX_CONTENT_HEIGHT_PERCENTAGE = SCREEN_SIZE_HEIGHT >= 1080 ? 0.40 : 0.75;
     /**
-     * <b>The factor, which shows the dimension of the game board size to the window size.</b>
+     * The factor, which shows the dimension of the game board size to the window size.
      */
     public static final int SCREEN_FACTOR = (int) (SCREEN_SIZE_HEIGHT * MAX_CONTENT_HEIGHT_PERCENTAGE) / LINES;
     /**
-     * <b>The factor, which shows the dimension of the normal text size and the text size in the window.</b>
+     * The factor, which shows the dimension of the normal text size and the text size in the window.
      */
     public static final float FONT_FACTOR = SCREEN_FACTOR * 0.05F;
     /**
-     * <b>The interval, in which the game blocks will fall down.</b>
+     * The interval, in which the game blocks will fall down.
      */
     public static final int INTERVAL_FALLING_BLOCK_MS = 1000;
+
+    /**
+     * Prevents the constructor from being called.
+     *
+     * @throws UnsupportedOperationException Thrown, when the constructor gets called.
+     */
+    private GameConstants() {
+        throw new UnsupportedOperationException("Cannot instantiate class");
+    }
 }

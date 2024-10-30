@@ -71,8 +71,7 @@ tasks {
     withType<Javadoc> {
         with(options as StandardJavadocDocletOptions) {
             encoding(Charsets.UTF_8.name())
-            addStringOption("Xdoclint:none", "-quiet")
-            // addStringOption("Xdoclint:reference,syntax,html,missing", "-quiet")
+            addStringOption("Xdoclint:all,reference,syntax,html,missing", "-quiet")
             keyWords()
             linkSource()
             use()

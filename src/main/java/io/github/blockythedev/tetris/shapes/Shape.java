@@ -28,11 +28,18 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * <b>An abstract class representing the base shape.</b>
+ * An abstract class representing the base shape.
  */
 public abstract class Shape {
     /**
-     * <b>Rotates a shape.</b>
+     * Constructs the class {@link Shape}.
+     */
+    public Shape() {
+        // default constructor
+    }
+
+    /**
+     * Rotates a shape.
      *
      * @param blockShape The raw 2d-array shape
      * @param rotation The {@link Rotation}
@@ -92,7 +99,7 @@ public abstract class Shape {
     }
 
     /**
-     * <b>Generate a random colored {@link Block} instance.</b>
+     * Generate a random colored {@link Block} instance.
      *
      * @return The {@link Block} instance
      */
@@ -102,8 +109,10 @@ public abstract class Shape {
     }
 
     /**
-     * <b>Generate a random colored {@link Block} instance.</b>
+     * Generate a random colored {@link Block} instance.
      *
+     * @param normalRotatedShape The normal rotated shape
+     * @param isNotRotatable Whether the shape is a not rotatable one
      * @return The {@link Block} instance
      */
     @NotNull
@@ -117,7 +126,7 @@ public abstract class Shape {
     }
 
     /**
-     * <b>Check if the shape can be rotated or not.</b>
+     * Check if the shape can be rotated or not.
      *
      * @return {@code false} because in general all shapes not overwriting this are rotatable
      */
@@ -126,8 +135,9 @@ public abstract class Shape {
     }
 
     /**
-     * <b>Get the shape.</b>
+     * Get the shape.
      *
+     * @param rotation The rotation
      * @return The shape
      */
     @NotNull

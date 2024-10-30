@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 /**
- * <b>This package contains all classes directly needed for the game logic.</b>
+ * This package contains all classes directly needed for the game logic.
  *
  * @since 1.0.0
  */

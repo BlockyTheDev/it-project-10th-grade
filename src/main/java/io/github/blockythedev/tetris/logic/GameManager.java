@@ -25,7 +25,7 @@ import javax.swing.Timer;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * <b>This class contains all general code needed for running the game.</b>
+ * This class contains all general code needed for running the game.
  */
 public class GameManager {
     private final Stats stats;
@@ -36,7 +36,7 @@ public class GameManager {
     private Timer timer;
 
     /**
-     * <b>The constructor of the class for managing all central instances.</b>
+     * The constructor of the class for managing all central instances.
      */
     public GameManager() {
         stats = new Stats();
@@ -47,14 +47,14 @@ public class GameManager {
     }
 
     /**
-     * <b>Init the {@link Timer}.</b>
+     * Init the {@link Timer}.
      */
     private void initTimer() {
         timer = new Timer(GameConstants.INTERVAL_FALLING_BLOCK_MS, new TetrisTimerListener(this));
     }
 
     /**
-     * <b>Run a game cycle.</b>
+     * Run a game cycle.
      */
     public void runGameCycle() {
         boardInstance.update();
@@ -62,7 +62,7 @@ public class GameManager {
     }
 
     /**
-     * <b>Reset the game.</b>
+     * Reset the game.
      */
     public void resetGame() {
         paused = false;
@@ -77,7 +77,7 @@ public class GameManager {
     }
 
     /**
-     * <b>Check if the game is in pause state.</b>
+     * Check if the game is in pause state.
      *
      * @return {@code true} if the game is paused, else {@code false}
      */
@@ -86,7 +86,7 @@ public class GameManager {
     }
 
     /**
-     * <b>Set the pause state of the game.</b>
+     * Set the pause state of the game.
      *
      * @param paused {@code true} if the game should be set in paused mode, else {@code false} when it should end the paused mode
      */
@@ -95,7 +95,7 @@ public class GameManager {
     }
 
     /**
-     * <b>Check if the game is in game-over state.</b>
+     * Check if the game is in game-over state.
      *
      * @return {@code true} if the game is in game-over state, else {@code false}
      */
@@ -104,7 +104,7 @@ public class GameManager {
     }
 
     /**
-     * <b>Set the game-over state of the game.</b>
+     * Set the game-over state of the game.
      *
      * @param gameOver {@code true} if the game should be set in game-over state, else {@code false} if it should end the game-over state
      */
@@ -113,7 +113,7 @@ public class GameManager {
     }
 
     /**
-     * <b>Get the {@link Stats} instance of the game.</b>
+     * Get the {@link Stats} instance of the game.
      *
      * @return The {@link Stats} instance
      */
@@ -123,7 +123,7 @@ public class GameManager {
     }
 
     /**
-     * <b>Get the {@link Board} instance of the game.</b>
+     * Get the {@link Board} instance of the game.
      *
      * @return The {@link Board} instance
      */
@@ -133,7 +133,7 @@ public class GameManager {
     }
 
     /**
-     * <b>Get the {@link Timer} of the game.</b>
+     * Get the {@link Timer} of the game.
      *
      * @return The {@link Timer}
      */
@@ -143,7 +143,7 @@ public class GameManager {
     }
 
     /**
-     * <b>Get the {@link MainScreen} UI.</b>
+     * Get the {@link MainScreen} UI.
      *
      * @return The {@link MainScreen}
      */
