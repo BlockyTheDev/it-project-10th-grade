@@ -21,9 +21,10 @@ import io.github.blockythedev.tetris.utils.Block;
 import io.github.blockythedev.tetris.utils.Rotation;
 import java.util.Map;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
- * Representing the {@code L} shape opened to left.
+ * Represents the {@literal  L} shape opened to the left.
  */
 public class LLeft extends Shape {
     private static final Map<Rotation, Block[][]> shapeList;
@@ -45,15 +46,8 @@ public class LLeft extends Shape {
         // default constructor
     }
 
-    /**
-     * Get the rotated shape.
-     *
-     * @param rotation The {@link Rotation}
-     * @return The rotated Shape
-     */
-    @NotNull
     @Override
-    public Block[][] getShape(@NotNull final Rotation rotation) {
+    public @Nullable Block @NotNull[] @NotNull[] getShape(@NotNull final Rotation rotation) {
         return shapeList.get(rotation);
     }
 }

@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 /**
- * This package contains all utility classes.
+ * This package contains utility classes.
  *
  * @since 1.0.0
  */

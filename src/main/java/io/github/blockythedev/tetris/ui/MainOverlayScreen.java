@@ -32,23 +32,27 @@ import org.jetbrains.annotations.NotNull;
  * This class contains the overlay for the main screen.
  */
 public class MainOverlayScreen extends JPanel {
-    /** The game manager. */
+    /**
+     * The game manager.
+     */
     private final GameManager gameManager;
-    /** The screen label with the game statistics. */
+    /**
+     * The screen label with the game statistics.
+     */
     private final JLabel statsText;
 
     /**
-     * The constructor for the {@link MainOverlayScreen} UI.
+     * Constructs the main overlay screen.
      *
-     * @param gameManager An {@link GameManager} instance
+     * @param gameManager The game manager instance.
      */
-    public MainOverlayScreen(@NotNull final GameManager gameManager) {
+    public MainOverlayScreen(final @NotNull GameManager gameManager) {
         this.gameManager = gameManager;
         statsText = new JLabel(MessageFormat.format(StringConstants.LABEL_TEXT_SCORE, 0));
     }
 
     /**
-     * Initialise the UI of {@link MainOverlayScreen}.
+     * Initialises the UI of the main overlay screen.
      */
     public void initUI() {
         setLayout(new BorderLayout());
@@ -61,7 +65,7 @@ public class MainOverlayScreen extends JPanel {
     }
 
     /**
-     * Refreshes the stats text.
+     * Updates the stats text.
      */
     public void updateStatsText() {
         statsText.setText(MessageFormat.format(StringConstants.LABEL_TEXT_SCORE, gameManager.getStats().getRemovedLines()));

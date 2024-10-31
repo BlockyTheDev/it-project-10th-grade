@@ -18,7 +18,6 @@
 package io.github.blockythedev.tetris;
 
 import io.github.blockythedev.tetris.logic.GameManager;
-import io.github.blockythedev.tetris.utils.Utils;
 import java.awt.GraphicsEnvironment;
 import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
@@ -51,10 +50,6 @@ public class Main {
         if (GraphicsEnvironment.isHeadless()) {
             logger.warning("Headless environments aren't supported! Please use a environment supporting a display, keyboard and mouse.");
             System.exit(-1);
-        }
-
-        if (Utils.getOSName().startsWith("Windows") && Utils.getJavaMajorVersion() < 11) {
-            logger.warning("Please use a LTS Java JDK Version '>= 11' for a better user interface experience: https://adoptium.net/de/temurin/releases/");
         }
 
         SwingUtilities.invokeLater(GameManager::new);

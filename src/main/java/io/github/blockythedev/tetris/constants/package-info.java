@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 /**
- * This package contains all classes storing constant values.
+ * This package contains all code for storing constant values.
  *
  * @since 1.0.0
  */

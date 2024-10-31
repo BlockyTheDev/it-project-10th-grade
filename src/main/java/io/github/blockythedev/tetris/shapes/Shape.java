@@ -41,82 +41,109 @@ public abstract class Shape {
     /**
      * Rotates a shape.
      *
-     * @param blockShape The raw 2d-array shape
-     * @param rotation The {@link Rotation}
-     * @param isNotRotatable {@code true} if the shape is <u>not</u> rotatable, else {@code false}
-     * @return The rotated shape
+     * @param blockShape The raw 2d-array shape.
+     * @param rotation The rotation.
+     * @param isNotRotatable {@code true} if the shape is <u>not</u> rotatable, else {@code false}.
+     * @return Returns the rotated shape.
      */
-    @Nullable
-    public static Block[][] rotateShape(@Nullable final Block[][] blockShape, @NotNull final Rotation rotation, final boolean isNotRotatable) {
-        if (blockShape == null) return null;
-
-        Block[][] shape = Arrays.copyOf(blockShape, blockShape.length);
-
-        if (isNotRotatable) return shape;
+    public static @Nullable Block @NotNull[] @NotNull[] rotateShape(final @Nullable Block @NotNull[] @NotNull[] blockShape, final @NotNull Rotation rotation, final boolean isNotRotatable) {
+        final Block[][] copiedShape = Arrays.copyOf(blockShape, blockShape.length);
+        if (isNotRotatable) {
+            return copiedShape;
+        }
 
         switch (rotation) {
-            case MIRRORED:
-                final Block[][] tempShape = new Block[shape.length][shape[0].length];
-                final int rows = shape.length;
-                final int columns = shape[0].length;
-
-                for (int row = 0; row < rows; row++) {
-                    for (int column = 0; column < columns; column++) {
-                        tempShape[rows - row - 1][columns - column - 1] = shape[row][column];
-                    }
-                }
-
-                shape = tempShape;
-                break;
-            case RIGHT:
-                int rows1 = shape.length;
-                int columns1 = shape[0].length;
-                final Block[][] tempShape1 = shape;
-                shape = new Block[columns1][rows1];
-
-                // turn matrix 90 degrees clockwise
-                for (int row = 0; row < rows1; row++) {
-                    for (int column = 0; column < columns1; column++) {
-                        shape[column][rows1 - row - 1] = tempShape1[row][column];
-                    }
-                }
-                break;
-            case LEFT:
-                int rows2 = shape.length;
-                int columns2 = shape[0].length;
-                final Block[][] tempShape2 = shape;
-                shape = new Block[columns2][rows2];
-
-                // turn matrix 90 degrees anticlockwise
-                for (int row = 0; row < rows2; row++) {
-                    for (int column = 0; column < columns2; column++) {
-                        shape[columns2 - column - 1][row] = tempShape2[row][column];
-                    }
-                }
-                break;
+            case MIRRORED -> {
+                return mirrorShape(copiedShape);
+            }
+            case RIGHT -> {
+                return rotateShapeClockwise(copiedShape);
+            }
+            case LEFT -> {
+                return rotateShapeAntiClockwise(copiedShape);
+            }
+            default -> {
+                return copiedShape;
+            }
         }
-        return shape;
     }
 
     /**
-     * Generate a random colored {@link Block} instance.
+     * Mirrors the given shape.
      *
-     * @return The {@link Block} instance
+     * @param normalShape The normal shape.
+     * @return Returns the mirrored shape.
      */
-    @NotNull
-    public static Block generateColoredBlock() {
+    private static @Nullable Block @NotNull[] @NotNull[] mirrorShape(final @Nullable Block @NotNull[] @NotNull[] normalShape) {
+        final int rows = normalShape.length;
+        final int columns = normalShape[0].length;
+        final Block[][] mirroredShape = new Block[rows][columns];
+
+        for (int row = 0; row < rows; row++) {
+            for (int column = 0; column < columns; column++) {
+                mirroredShape[rows - row - 1][columns - column - 1] = normalShape[row][column];
+            }
+        }
+        return mirroredShape;
+    }
+
+    /**
+     * Rotates the given shape by 90 degrees clockwise.
+     *
+     * @param normalShape The normal shape.
+     * @return Returns the 90 degrees clockwise rotated shape.
+     */
+    private static @Nullable Block @NotNull[] @NotNull[] rotateShapeClockwise(final @Nullable Block @NotNull[] @NotNull[] normalShape) {
+        final int rows = normalShape.length;
+        final int columns = normalShape[0].length;
+        final Block[][] rotatedShape = new Block[columns][rows];
+
+        // turn matrix 90 degrees clockwise
+        for (int row = 0; row < rows; row++) {
+            for (int column = 0; column < columns; column++) {
+                rotatedShape[column][rows - row - 1] = normalShape[row][column];
+            }
+        }
+        return rotatedShape;
+    }
+
+    /**
+     * Rotates the given shape by 90 degrees anti-clockwise.
+     *
+     * @param normalShape The normal shape.
+     * @return Returns the 90 degrees anti-clockwise rotated shape.
+     */
+    private static @Nullable Block @NotNull[] @NotNull[] rotateShapeAntiClockwise(final @Nullable Block @NotNull[] @NotNull[] normalShape) {
+        final int rows = normalShape.length;
+        final int columns = normalShape[0].length;
+        final Block[][] rotatedShape = new Block[columns][rows];
+
+        // turn matrix 90 degrees anti-clockwise
+        for (int row = 0; row < rows; row++) {
+            for (int column = 0; column < columns; column++) {
+                rotatedShape[columns - column - 1][row] = normalShape[row][column];
+            }
+        }
+        return rotatedShape;
+    }
+
+    /**
+     * Generates a random colored block instance.
+     *
+     * @return Returns the colored block instance.
+     */
+    public static @NotNull Block generateColoredBlock() {
         return new Block(new Color(Utils.randomFloat(), Utils.randomFloat(), Utils.randomFloat()));
     }
 
     /**
-     * Generate a random colored {@link Block} instance.
+     * Generates a random colored block instance.
      *
-     * @param normalRotatedShape The normal rotated shape
-     * @param isNotRotatable Whether the shape is a not rotatable one
-     * @return The {@link Block} instance
+     * @param normalRotatedShape The normal rotated shape.
+     * @param isNotRotatable Whether the shape is a not rotatable.
+     * @return Returns a map with the shape rotated in all directions.
      */
-    @NotNull
-    public static Map<Rotation, Block[][]> generateShapeList(@NotNull final Block[][] normalRotatedShape, final boolean isNotRotatable) {
+    public static @NotNull Map<Rotation, Block[][]> generateShapeList(final @Nullable Block @NotNull[] @NotNull[] normalRotatedShape, final boolean isNotRotatable) {
         Map<Rotation, Block[][]> shapeList = new HashMap<>();
         shapeList.put(Rotation.NORMAL, normalRotatedShape);
         shapeList.put(Rotation.RIGHT, Shape.rotateShape(normalRotatedShape, Rotation.RIGHT, isNotRotatable));
@@ -126,22 +153,21 @@ public abstract class Shape {
     }
 
     /**
-     * Check if the shape can be rotated or not.
+     * Checks if the shape can be rotated or not.
      *
-     * @return {@code false} because in general all shapes not overwriting this are rotatable
+     * @return Returns whether the shape is a rotatable one.
      */
     public static boolean isNotRotatable() {
         return false;
     }
 
     /**
-     * Get the shape.
+     * Gets the shape.
      *
-     * @param rotation The rotation
-     * @return The shape
+     * @param rotation The rotation.
+     * @return Returns the shape-
      */
-    @NotNull
-    public Block[][] getShape(@NotNull final Rotation rotation) {
+    public @Nullable Block @NotNull[] @NotNull[] getShape(final @NotNull Rotation rotation) {
         throw new IllegalStateException("Method 'getShape' not overwritten");
     }
 }

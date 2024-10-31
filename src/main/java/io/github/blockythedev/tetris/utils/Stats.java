@@ -18,20 +18,21 @@
 package io.github.blockythedev.tetris.utils;
 
 /**
- * A class for storing the game stats.
+ * A class for storing the statistics.
  */
 public class Stats {
+    private static Stats INSTANCE;
     private int removedLines;
 
     /**
-     * Constructs the class {@link Stats}.
+     * Constructs an instance of the class {@link Stats}.
      */
-    public Stats() {
+    private Stats() {
         this.removedLines = 0;
     }
 
     /**
-     * Reset the stats.
+     * Resets the stats.
      */
     public void reset() {
         this.removedLines = 0;
@@ -47,9 +48,21 @@ public class Stats {
     /**
      * Get the removed line stats.
      *
-     * @return The removed lines stats value
+     * @return Returns the removed lines stats value.
      */
     public int getRemovedLines() {
         return removedLines;
+    }
+
+    /**
+     * Gets the instance of the class {@link Stats}.
+     *
+     * @return Returns the stats instance.
+     */
+    public static Stats getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new Stats();
+        }
+        return INSTANCE;
     }
 }

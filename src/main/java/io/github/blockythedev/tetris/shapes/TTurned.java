@@ -21,9 +21,10 @@ import io.github.blockythedev.tetris.utils.Block;
 import io.github.blockythedev.tetris.utils.Rotation;
 import java.util.Map;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
- * Representing the {@code mirrored T} shape.
+ * Represents the {@literal  mirrored T} shape.
  */
 public class TTurned extends Shape {
     private static final Map<Rotation, Block[][]> shapeList;
@@ -45,15 +46,8 @@ public class TTurned extends Shape {
         // default constructor
     }
 
-    /**
-     * Get the rotated shape.
-     *
-     * @param rotation The {@link Rotation}
-     * @return The rotated Shape
-     */
-    @NotNull
     @Override
-    public Block[][] getShape(@NotNull final Rotation rotation) {
+    public @Nullable Block @NotNull[] @NotNull[] getShape(final @NotNull Rotation rotation) {
         return shapeList.get(rotation);
     }
 }

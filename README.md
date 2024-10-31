@@ -21,14 +21,14 @@ The code in this project is published under the GPLv3 licence, unless otherwise 
 
 ## Compile & Run
 ### Run the game
-To run this project you need to have an JRE or OpenJDK 8 or higher installed.
-OpenJDK builds for most operating systems can be downloaded from [here](https://www.azul.com/downloads).
+To run this project you need to have an JDK 21 or higher installed.
+JDK builds for most operating systems can be downloaded from [here](https://www.azul.com/downloads).
 <br>
 To run this game, download the `.jar` file from the <u>latest</u> release.
 The Releases can be found [here](https://github.com/BlockyTheDev/school-project-tetris/releases).
 
 ### Compile the game
-To compile this project you need to have an OpenJDK 8 or higher installed.
+To compile this project you need to have an JDK 21 or higher installed.
 [Azul - Zulu](https://www.azul.com/downloads) has builds for most operating systems.
 <b>
 

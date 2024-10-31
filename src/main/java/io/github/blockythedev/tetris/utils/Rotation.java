@@ -20,7 +20,7 @@ package io.github.blockythedev.tetris.utils;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Representing a rotation.
+ * This enum represents a shape rotation.
  */
 public enum Rotation {
     /**
@@ -28,37 +28,35 @@ public enum Rotation {
      */
     NORMAL,
     /**
-     * Rotation to right side.
+     * The rotation to right side.
      */
     RIGHT,
     /**
-     * Mirrored rotation.
+     * The mirrored rotation.
      */
     MIRRORED,
     /**
-     * Rotation to left side.
+     * The rotation to left side.
      */
     LEFT;
 
     /**
-     * Get the previous {@link Rotation} in clockwise direction.
+     * Gets the previous rotation in clockwise direction.
      *
-     * @return The previous {@link Rotation}
+     * @return Returns the previous rotation in clockwise direction.
      */
-    @NotNull
-    public Rotation previous() {
+    public @NotNull Rotation previous() {
         final Rotation[] values = Rotation.values();
-        return values[(this.ordinal() - 1 + values.length) % values.length];
+        return values[(ordinal() - 1 + values.length) % values.length];
     }
 
     /**
-     * Get the next {@link Rotation} in clockwise direction.
+     * Gets the next rotation in clockwise direction.
      *
-     * @return The next {@link Rotation}
+     * @return Returns the next rotation in clockwise direction.
      */
-    @NotNull
-    public Rotation next() {
+    public @NotNull Rotation next() {
         final Rotation[] values = Rotation.values();
-        return values[(this.ordinal() + 1) % values.length];
+        return values[(ordinal() + 1) % values.length];
     }
 }

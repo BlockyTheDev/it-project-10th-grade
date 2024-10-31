@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 /**
- * <b>The root package containing all classes for the game.</b>
+ * The root package containing all code of the game.
  *
  * @since 1.0.0
  */

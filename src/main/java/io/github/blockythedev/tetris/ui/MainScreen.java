@@ -48,26 +48,26 @@ public class MainScreen extends JFrame {
      *
      * @param gameManager An {@link GameManager} instance
      */
-    public MainScreen(@NotNull final GameManager gameManager) {
+    public MainScreen(final @NotNull GameManager gameManager) {
         this.gameManager = gameManager;
         blockContainerScreen = new BlockContainerScreen(gameManager);
         mainOverlayScreen = new MainOverlayScreen(gameManager);
     }
 
     /**
-     * Initialise the UI of {@link MainScreen}.
+     * Initialises the UI of the main screen.
      */
     public void initUI() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
-                 UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
+                 UnsupportedLookAndFeelException ignored) {
+            // should never happen, as the system look and feel is used with the default one as fallback
         }
 
         addWindowListener(new WindowAdapter() {
             @Override
-            public void windowClosing(WindowEvent e) {
+            public void windowClosing(final WindowEvent e) {
                 gameManager.setPaused(true);
                 final int confirmed = JOptionPane.showConfirmDialog(null, StringConstants.DIALOG_MESSAGE_CONFIRM_EXIT, StringConstants.DIALOG_TITLE_CONFIRM_EXIT, JOptionPane.YES_NO_OPTION);
 
@@ -95,10 +95,10 @@ public class MainScreen extends JFrame {
     }
 
     /**
-     * Start the game.
+     * Starts the game.
      */
     public void startGame() {
-        final JTextArea textArea = GameConstants.SCREEN_SIZE_HEIGHT >= 1080 ? new JTextArea(StringConstants.DIALOG_MESSAGE_GAME_INSTRUCTION) : new JTextArea(StringConstants.DIALOG_MESSAGE_GAME_INSTRUCTION, 20, 70);
+        final JTextArea textArea = generateInstructionTextArea();
         textArea.setEditable(false);
         JOptionPane.showMessageDialog(this, new JScrollPane(textArea), StringConstants.DIALOG_TITLE_GAME_INSTRUCTIONS, JOptionPane.INFORMATION_MESSAGE);
 
@@ -108,21 +108,32 @@ public class MainScreen extends JFrame {
     }
 
     /**
+     * Generates the {@link JTextArea} for the game instructions.
+     *
+     * @return Returns the generated text area with the game instructions.
+     */
+    private @NotNull JTextArea generateInstructionTextArea() {
+        if (GameConstants.SCREEN_SIZE_HEIGHT >= 1080) {
+            return new JTextArea(StringConstants.DIALOG_MESSAGE_GAME_INSTRUCTION);
+        }
+        return new JTextArea(StringConstants.DIALOG_MESSAGE_GAME_INSTRUCTION, 20, 70);
+    }
+
+    /**
      * Updates the window title with the specific extension.
      *
-     * @param extension The title extension replacing the placeholder in {@link StringConstants#WINDOW_TITLE}
+     * @param extension The title extension replacing the placeholder in {@link StringConstants#WINDOW_TITLE}.
      */
-    public void updateTitle(@NotNull final String extension) {
+    public void updateTitle(final @NotNull String extension) {
         setTitle(MessageFormat.format(StringConstants.WINDOW_TITLE, extension));
     }
 
     /**
-     * Get the instance of the {@link MainOverlayScreen}.
+     * Gets the main overlay screen instance.
      *
-     * @return The instance of {@link MainOverlayScreen}
+     * @return Returns the instance of {@link MainOverlayScreen}.
      */
-    @NotNull
-    public MainOverlayScreen getMainOverlayScreen() {
+    public @NotNull MainOverlayScreen getMainOverlayScreen() {
         return mainOverlayScreen;
     }
 }

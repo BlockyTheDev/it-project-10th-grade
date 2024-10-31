@@ -25,51 +25,51 @@ import javax.swing.Timer;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * This class contains all general code needed for running the game.
+ * This class contains all general logic for running the game.
  */
 public class GameManager {
     private final Stats stats;
-    private final Board boardInstance;
+    private final Board board;
     private final MainScreen mainScreen;
     private boolean paused;
     private boolean gameOver;
     private Timer timer;
 
     /**
-     * The constructor of the class for managing all central instances.
+     * Constructs a {@link GameManager} for managing all central components.
      */
     public GameManager() {
-        stats = new Stats();
-        boardInstance = new Board(this);
+        stats = Stats.getInstance();
+        board = new Board(this);
         initTimer();
         mainScreen = new MainScreen(this);
         mainScreen.initUI();
     }
 
     /**
-     * Init the {@link Timer}.
+     * Initializes the game timer.
      */
     private void initTimer() {
         timer = new Timer(GameConstants.INTERVAL_FALLING_BLOCK_MS, new TetrisTimerListener(this));
     }
 
     /**
-     * Run a game cycle.
+     * Represents a game cycle.
      */
     public void runGameCycle() {
-        boardInstance.update();
+        board.update();
         mainScreen.repaint();
     }
 
     /**
-     * Reset the game.
+     * Resets the game for a new run.
      */
     public void resetGame() {
         paused = false;
         gameOver = false;
         stats.reset();
         initTimer();
-        boardInstance.reset();
+        board.reset();
         mainScreen.repaint();
         mainScreen.getMainOverlayScreen().updateStatsText();
         mainScreen.updateTitle(StringConstants.WINDOW_TITLE_EXTENSION_READY);
@@ -77,78 +77,90 @@ public class GameManager {
     }
 
     /**
-     * Check if the game is in pause state.
+     * Gets the games paused state.
      *
-     * @return {@code true} if the game is paused, else {@code false}
+     * @return Returns {@code true} if the game is in the paused state, else {@code false}.
      */
     public boolean isPaused() {
         return paused;
     }
 
     /**
-     * Set the pause state of the game.
+     * Sets the paused state of the game.
      *
-     * @param paused {@code true} if the game should be set in paused mode, else {@code false} when it should end the paused mode
+     * @param paused Whether the paused state should be set.
      */
     public void setPaused(final boolean paused) {
         this.paused = paused;
+        updatePausedTitle();
     }
 
     /**
-     * Check if the game is in game-over state.
+     * Toggles the games paused state.
+     */
+    public void togglePaused() {
+        paused = !paused;
+        updatePausedTitle();
+    }
+
+    /**
+     * Updates the main screen title to show whether the game is in paused state.
+     */
+    private void updatePausedTitle() {
+        getMainScreen().updateTitle(paused ? StringConstants.WINDOW_TITLE_EXTENSION_PAUSED : StringConstants.WINDOW_TITLE_EXTENSION_RUNNING);
+    }
+
+    /**
+     * Gets the game-over state.
      *
-     * @return {@code true} if the game is in game-over state, else {@code false}
+     * @return Returns the game-over state.
      */
     public boolean isGameOver() {
         return gameOver;
     }
 
     /**
-     * Set the game-over state of the game.
+     * Sets the game-over state.
      *
-     * @param gameOver {@code true} if the game should be set in game-over state, else {@code false} if it should end the game-over state
+     * @param gameOver Whether the game-over state should be set.
      */
     public void setGameOver(final boolean gameOver) {
         this.gameOver = gameOver;
     }
 
     /**
-     * Get the {@link Stats} instance of the game.
+     * Gets the current stats.
      *
-     * @return The {@link Stats} instance
+     * @return Returns the current stats.
      */
-    @NotNull
-    public Stats getStats() {
+    public @NotNull Stats getStats() {
         return stats;
     }
 
     /**
-     * Get the {@link Board} instance of the game.
+     * Gets the current board.
      *
-     * @return The {@link Board} instance
+     * @return Returns the current board.
      */
-    @NotNull
-    public Board getBoardInstance() {
-        return boardInstance;
+    public @NotNull Board getBoard() {
+        return board;
     }
 
     /**
-     * Get the {@link Timer} of the game.
+     * Gets the current timer.
      *
-     * @return The {@link Timer}
+     * @return Returns the current timer.
      */
-    @NotNull
-    public Timer getTimer() {
+    public @NotNull Timer getTimer() {
         return timer;
     }
 
     /**
-     * Get the {@link MainScreen} UI.
+     * Gets the main screen.
      *
-     * @return The {@link MainScreen}
+     * @return Returns the main screen.
      */
-    @NotNull
-    public MainScreen getMainScreen() {
+    public @NotNull MainScreen getMainScreen() {
         return mainScreen;
     }
 }

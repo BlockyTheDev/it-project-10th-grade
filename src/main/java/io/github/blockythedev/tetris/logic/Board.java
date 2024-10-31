@@ -48,7 +48,7 @@ public class Board {
      *
      * @param gameManager The game manager.
      */
-    public Board(@NotNull final GameManager gameManager) {
+    public Board(final @NotNull GameManager gameManager) {
         this.gameManager = gameManager;
         gameBoard = new Block[GameConstants.LINES][GameConstants.COLUMNS];
     }
@@ -60,14 +60,14 @@ public class Board {
         final Stats stats = gameManager.getStats();
         final List<Block[]> rows = new ArrayList<>();
 
-        for (Block[] row : gameBoard) {
+        for (final Block[] row : gameBoard) {
             if (Utils.isFull(row)) {
                 stats.incrementRemovedLines();
                 continue;
             } else if (Utils.isEmpty(row)) {
                 continue;
             }
-            rows.add(0, row.clone());
+            rows.addFirst(row.clone());
         }
 
         clearBoard();
@@ -95,8 +95,7 @@ public class Board {
      * Inserts the current shape into the board if falling is finished.
      */
     private void finishFalling() {
-        Block[][] rotatedShape = currentShape.getShape(rotation);
-
+        final Block[][] rotatedShape = currentShape.getShape(rotation);
         for (int row = 0; row < rotatedShape.length; row++) {
             for (int column = 0; column < rotatedShape[row].length; column++) {
                 if (rotatedShape[row][column] != null) {
@@ -129,7 +128,7 @@ public class Board {
     }
 
     /**
-     * Move the current shape on the X-axis.
+     * Moves the current shape on the X-axis.
      *
      * @param right {@code true} if the direction is right, else {@code false}
      */
@@ -160,19 +159,20 @@ public class Board {
     }
 
     /**
-     * Check if the shape is placeable at this location
+     * Checks if the shape is placeable at this location.
      *
-     * @param shape The {@link Shape} instance
-     * @param newRotation The {@link Rotation} to use for checking
-     * @param newPosX The X-position to check
-     * @param newPosY The Y-position to check
-     * @return {@code true] if the shape is placeable at this location, else {@code false}
+     * @param shape The shape instance.
+     * @param newRotation The rotation to use for checking.
+     * @param newPosX The X-position to check.
+     * @param newPosY The Y-position to check.
+     * @return Returns {@code true} if the shape is placeable at this location, else {@code false}.
      */
-    private boolean isPlaceable(@NotNull final Shape shape, @NotNull final Rotation newRotation, final int newPosX, final int newPosY) {
-        Block[][] rotatedShape = shape.getShape(newRotation);
+    private boolean isPlaceable(final @NotNull Shape shape, final @NotNull Rotation newRotation, final int newPosX, final int newPosY) {
+        final Block[][] rotatedShape = shape.getShape(newRotation);
 
-        if (gameBoard[0].length < newPosX + rotatedShape[0].length || gameBoard.length < newPosY + rotatedShape.length || newPosX < 0)
+        if (gameBoard[0].length < newPosX + rotatedShape[0].length || gameBoard.length < newPosY + rotatedShape.length || newPosX < 0) {
             return false;
+        }
 
         for (int row = 0; row < rotatedShape.length; row++) {
             for (int column = 0; column < rotatedShape[row].length; column++) {
@@ -184,7 +184,7 @@ public class Board {
     }
 
     /**
-     * Make a bord update.
+     * Represents a bord update.
      */
     public void update() {
         if (gameManager.isPaused() || gameManager.isGameOver()) {
@@ -211,7 +211,7 @@ public class Board {
     }
 
     /**
-     * Logic to run, when the game enters a game over state.
+     * Represents the logic, when the game enters the game-over state.
      */
     private void doGamerOverLogic() {
         gameManager.getTimer().stop();
@@ -237,7 +237,7 @@ public class Board {
     }
 
     /**
-     * Reset the board.
+     * Resets the board.
      */
     public void reset() {
         currentShape = null;
@@ -248,50 +248,47 @@ public class Board {
     }
 
     /**
-     * Get the game board.
+     * Gets the game board.
      *
-     * @return The game board
+     * @return Returns the game board.
      */
-    @NotNull
-    public Block[][] getBoard() {
+    public @NotNull Block[][] getBoard() {
         return gameBoard;
     }
 
     /**
-     * Get the current shape.
+     * Gets the current shape.
      *
-     * @return The shape
+     * @return Returns the current shape.
      */
-    @Nullable
-    public Shape getCurrentShape() {
+    public @Nullable Shape getCurrentShape() {
         return currentShape;
     }
 
     /**
-     * Get the X-position of the current shape.
+     * Gets the X-position of the current shape.
      *
-     * @return The x-position
+     * @return Returns x-position of the current shape.
      */
     public int getPosX() {
         return posX;
     }
 
     /**
-     * Get the Y-position of the current shape.
+     * Gets the Y-position of the current shape.
      *
-     * @return The Y-position
+     * @return Returns the Y-position of the current shape
      */
     public int getPosY() {
         return posY;
     }
 
     /**
-     * Get the {@link Rotation}} of the current shape.
+     * Gets the current rotation.
      *
-     * @return The rotation
+     * @return Returns the current rotation.
      */
-    @NotNull
-    public Rotation getRotation() {
+    public @NotNull Rotation getRotation() {
         return rotation;
     }
 }
