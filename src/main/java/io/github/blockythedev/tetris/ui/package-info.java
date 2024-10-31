@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 /**
- * This package contains all user interface related classes.
+ * This package contains all user interface related code.
  *
  * @since 1.0.0
  */

@@ -17,86 +17,61 @@
  */
 package io.github.blockythedev.tetris.logic;
 
-import io.github.blockythedev.tetris.constants.StringConstants;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The class for listening for key inputs.
+ * A class for listening for key inputs.
  */
 public class KeyManager implements KeyListener {
     private final GameManager gameManager;
 
     /**
-     * The constructor for the {@link KeyManager} listener.
+     * Constructs a {@link KeyManager} for key press listening.
      *
-     * @param gameManager An {@link GameManager} instance
+     * @param gameManager The {@link GameManager} instance.
      */
-    public KeyManager(final GameManager gameManager) {
+    public KeyManager(final @NotNull GameManager gameManager) {
         this.gameManager = gameManager;
     }
 
-    /**
-     * Invoked when an key is pressed.
-     * <p>
-     * Note: Do NOT call this by hand.
-     * This is automatically called, after every key press.
-     * </p>
-     *
-     * @param e The {@link KeyEvent}
-     */
     @Override
-    public void keyPressed(@NotNull final KeyEvent e) {
-        final Board board = gameManager.getBoardInstance();
+    public void keyPressed(final @NotNull KeyEvent event) {
+        if (gameManager.isGameOver()) {
+            return;
+        }
 
-        if (gameManager.isGameOver()) return;
-
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_LEFT:
-            case KeyEvent.VK_KP_LEFT:
-            case KeyEvent.VK_A:
-                if (board.getCurrentShape() == null || gameManager.isPaused()) return;
-                board.moveXAxis(false);
-                break;
-            case KeyEvent.VK_RIGHT:
-            case KeyEvent.VK_KP_RIGHT:
-            case KeyEvent.VK_D:
-                if (board.getCurrentShape() == null || gameManager.isPaused()) return;
-                board.moveXAxis(true);
-                break;
-            case KeyEvent.VK_UP:
-            case KeyEvent.VK_KP_UP:
-            case KeyEvent.VK_W:
-                if (board.getCurrentShape() == null || gameManager.isPaused()) return;
-                board.rotateShape(true);
-                break;
-            case KeyEvent.VK_DOWN:
-            case KeyEvent.VK_KP_DOWN:
-            case KeyEvent.VK_S:
-                if (board.getCurrentShape() == null || gameManager.isPaused()) return;
-                board.rotateShape(false);
-                break;
-            case KeyEvent.VK_SPACE:
-                if (board.getCurrentShape() == null || gameManager.isPaused()) return;
-                board.dropShapeDown();
-                break;
-            case KeyEvent.VK_PAUSE:
-            case KeyEvent.VK_P:
-                gameManager.setPaused(!gameManager.isPaused());
-                gameManager.getMainScreen().updateTitle(gameManager.isPaused() ? StringConstants.WINDOW_TITLE_EXTENSION_PAUSED : StringConstants.WINDOW_TITLE_EXTENSION_RUNNING);
-                break;
+        final Board board = gameManager.getBoard();
+        switch (event.getKeyCode()) {
+            case KeyEvent.VK_LEFT, KeyEvent.VK_KP_LEFT, KeyEvent.VK_A -> executeBoardShapeAction(() -> board.moveXAxis(false));
+            case KeyEvent.VK_RIGHT, KeyEvent.VK_KP_RIGHT, KeyEvent.VK_D -> executeBoardShapeAction(() -> board.moveXAxis(true));
+            case KeyEvent.VK_UP, KeyEvent.VK_KP_UP, KeyEvent.VK_W -> executeBoardShapeAction(() -> board.rotateShape(true));
+            case KeyEvent.VK_DOWN, KeyEvent.VK_KP_DOWN, KeyEvent.VK_S -> executeBoardShapeAction(() -> board.rotateShape(false));
+            case KeyEvent.VK_SPACE -> executeBoardShapeAction(board::dropShapeDown);
+            case KeyEvent.VK_PAUSE, KeyEvent.VK_P -> gameManager.togglePaused();
         }
     }
 
     @Override
     public void keyReleased(@NotNull final KeyEvent e) {
-        // Do Nothing...
+        // not needed
     }
 
     @Override
     public void keyTyped(@NotNull final KeyEvent e) {
-        // Do Nothing...
+        // not needed
     }
 
+    /**
+     * Executes the given board action if the game is not paused and the current shape is not null.
+     *
+     * @param action The action to execute if needed.
+     */
+    private void executeBoardShapeAction(final @NotNull Runnable action) {
+        final Board board = gameManager.getBoard();
+        if (!gameManager.isPaused() && board.getCurrentShape() != null) {
+            action.run();
+        }
+    }
 }

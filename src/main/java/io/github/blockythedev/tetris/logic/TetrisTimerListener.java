@@ -22,31 +22,22 @@ import java.awt.event.ActionListener;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A class for timer actions.
+ * A class for the timer action.
  */
 public class TetrisTimerListener implements ActionListener {
     private final GameManager gameManager;
 
     /**
-     * Create an instance of the {@link TetrisTimerListener} class.
+     * Creates an instance of the {@link TetrisTimerListener}.
      *
-     * @param gameManager A {@link GameManager} instance
+     * @param gameManager The game manager.
      */
-    public TetrisTimerListener(@NotNull final GameManager gameManager) {
+    public TetrisTimerListener(final @NotNull GameManager gameManager) {
         this.gameManager = gameManager;
     }
 
-    /**
-     * Invoked when an action occurs.
-     * <p>
-     * Note: Do NOT call this by hand.
-     * This is automatically called, after every timer cycle.
-     * </p>
-     *
-     * @param e The {@link ActionListener}
-     */
     @Override
-    public void actionPerformed(@NotNull final ActionEvent e) {
+    public void actionPerformed(final @NotNull ActionEvent event) {
         gameManager.runGameCycle();
     }
 }

@@ -21,27 +21,9 @@ import java.awt.Color;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Represents a block with color.
+ * Represents a block of a shape with color.
+ *
+ * @param color The color of the block.
  */
-public class Block {
-    private final Color color;
-
-    /**
-     * Create a block representing a colored block.
-     *
-     * @param color The {@link Color}
-     */
-    public Block(@NotNull final Color color) {
-        this.color = color;
-    }
-
-    /**
-     * Get the color of the block.
-     *
-     * @return The {@link Color}
-     */
-    @NotNull
-    public Color getColor() {
-        return color;
-    }
+public record Block(@NotNull Color color) {
 }

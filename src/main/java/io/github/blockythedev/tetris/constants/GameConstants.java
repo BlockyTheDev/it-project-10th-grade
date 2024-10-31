@@ -20,7 +20,7 @@ package io.github.blockythedev.tetris.constants;
 import java.awt.Toolkit;
 
 /**
- * A final class to store some game constants.
+ * A final class containing some general game constants.
  */
 public final class GameConstants {
     /**

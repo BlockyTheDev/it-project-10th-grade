@@ -21,9 +21,10 @@ import io.github.blockythedev.tetris.utils.Block;
 import io.github.blockythedev.tetris.utils.Rotation;
 import java.util.Map;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
- * Representing the {@code Square} shape.
+ * Represents the {@literal  Square} shape.
  */
 public class Square extends Shape {
     private static final Map<Rotation, Block[][]> shapeList;
@@ -48,21 +49,14 @@ public class Square extends Shape {
     /**
      * Check if the shape can be rotated or not.
      *
-     * @return {@code true} because the {@link Square} shape is not rotatable
+     * @return Returns {@code true} as the shape is not rotatable.
      */
     public static boolean isNotRotatable() {
         return true;
     }
 
-    /**
-     * Get the rotated shape.
-     *
-     * @param rotation The {@link Rotation}
-     * @return The rotated Shape
-     */
-    @NotNull
     @Override
-    public Block[][] getShape(@NotNull final Rotation rotation) {
+    public @Nullable Block @NotNull[] @NotNull[] getShape(final @NotNull Rotation rotation) {
         return shapeList.get(rotation);
     }
 }

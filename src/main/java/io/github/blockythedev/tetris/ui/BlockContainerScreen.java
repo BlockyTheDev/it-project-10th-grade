@@ -31,90 +31,91 @@ import javax.swing.JPanel;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * This class contains the screen containing the drawn shapes.
+ * This class contains the screen container for the drawn shapes.
  */
 public class BlockContainerScreen extends JPanel {
-    /** The game manager. */
+    /**
+     * The game manager.
+     */
     private final GameManager gameManager;
 
     /**
-     * Create an instance of the {@link BlockContainerScreen} class.
+     * Constructs an instance of the block container screen.
      *
-     * @param gameManager A {@link GameManager} instance
+     * @param gameManager The game manager instance.
      */
-    public BlockContainerScreen(@NotNull final GameManager gameManager) {
+    public BlockContainerScreen(final @NotNull GameManager gameManager) {
         this.gameManager = gameManager;
     }
 
     /**
-     * Initialise the UI of {@link BlockContainerScreen}.
+     * Initialises the block container screen.
      */
     public void initUI() {
-        final Dimension minimumWindowDimension = new Dimension(GameConstants.COLUMNS * GameConstants.SCREEN_FACTOR, GameConstants.LINES * GameConstants.SCREEN_FACTOR);
-        setPreferredSize(minimumWindowDimension);
+        setPreferredSize(new Dimension(GameConstants.COLUMNS * GameConstants.SCREEN_FACTOR, GameConstants.LINES * GameConstants.SCREEN_FACTOR));
         setLayout(new BorderLayout());
         setFocusable(true);
         addKeyListener(new KeyManager(gameManager));
     }
 
     /**
-     * Draw a block with shadow.
+     * Draws a block with shadow.
      *
-     * @param graphics The {@link Graphics} context in which to paint
-     * @param block The {@link Block} to draw
-     * @param x The left side x-coordinate
-     * @param y The upper side y-coordinate
-     * @param width The block width
-     * @param height The block height
+     * @param graphics The {@link Graphics} context to use for drawing.
+     * @param block The block to draw.
+     * @param x The left side x-coordinate.
+     * @param y The upper side y-coordinate.
+     * @param width The block width.
+     * @param height The block height.
      */
-    private void drawBlock(@NotNull final Graphics graphics, @NotNull final Block block, final int x, final int y, final int width, final int height) {
-        graphics.setColor(block.getColor());
+    private void drawBlock(final @NotNull Graphics graphics, final @NotNull Block block, final int x, final int y, final int width, final int height) {
+        graphics.setColor(block.color());
         graphics.fillRect(x, y, width, height);
-        graphics.setColor(block.getColor().brighter());
+        graphics.setColor(block.color().brighter());
         // Line (Left): Bottom-Left -> Top-Left
         graphics.drawLine(x, y + height - 1, x, y);
         // Line (Top): Top-Left -> Top-Right
         graphics.drawLine(x, y, x + width - 1, y);
-        graphics.setColor(block.getColor().darker());
+        graphics.setColor(block.color().darker());
         // Line (Bottom): Bottom-Left -> Bottom-Right
         graphics.drawLine(x + 1, y + height - 1, x + width - 1, y + height - 1);
         // Line (Right): Bottom-Right -> Top-Right
         graphics.drawLine(x + width - 1, y + height - 1, x + width - 1, y + 1);
     }
 
-    /**
-     * Paint the board.
-     * <p>
-     * Note: Do NOT call this by hand, use {@link #repaint()} instead.
-     * This is automatically called on things like window dimension change.
-     * </p>
-     *
-     * @param graphics The {@link Graphics} context in which to paint
-     */
     @Override
-    public void paint(@NotNull final Graphics graphics) {
+    public void paint(final @NotNull Graphics graphics) {
         super.paint(graphics);
-        final Board boardInstance = gameManager.getBoardInstance();
-        final Block[][] board = boardInstance.getBoard();
-        final int width = getWidth() / GameConstants.COLUMNS;
-        final int height = getHeight() / GameConstants.LINES;
+        final Board board = gameManager.getBoard();
+        final Block[][] boardArray = board.getBoard();
+        final int screenBlockWidth = getWidth() / GameConstants.COLUMNS;
+        final int screenBlockHeight = getHeight() / GameConstants.LINES;
 
-        for (int row = 0; row < board.length; row++) {
-            for (int column = 0; column < board[row].length; column++) {
-                final Block block = board[row][column];
-                if (block == null) continue;
-                drawBlock(graphics, block, column * width, row * height, width, height);
+        // draws the current board state onto the screen
+        for (int boardRow = 0; boardRow < boardArray.length; boardRow++) {
+            for (int boardColumn = 0; boardColumn < boardArray[boardRow].length; boardColumn++) {
+                final Block block = boardArray[boardRow][boardColumn];
+                if (block == null) {
+                    continue;
+                }
+                drawBlock(graphics, block, boardColumn * screenBlockWidth, boardRow * screenBlockHeight, screenBlockWidth, screenBlockHeight);
             }
         }
 
-        final Shape currentShape = boardInstance.getCurrentShape();
-        if (currentShape == null) return;
-        final Block[][] shape = currentShape.getShape(boardInstance.getRotation());
-        for (int row = 0; row < shape.length; row++) {
-            for (int column = 0; column < shape[row].length; column++) {
-                final Block block = shape[row][column];
-                if (block == null) continue;
-                drawBlock(graphics, block, (column + boardInstance.getPosX()) * width, (row + boardInstance.getPosY()) * height, width, height);
+        final Shape currentShape = board.getCurrentShape();
+        if (currentShape == null) {
+            return;
+        }
+
+        // draws the current shape onto the screen
+        final Block[][] shape = currentShape.getShape(board.getRotation());
+        for (int shapeRow = 0; shapeRow < shape.length; shapeRow++) {
+            for (int shapeColumn = 0; shapeColumn < shape[shapeRow].length; shapeColumn++) {
+                final Block block = shape[shapeRow][shapeColumn];
+                if (block == null) {
+                    continue;
+                }
+                drawBlock(graphics, block, (shapeColumn + board.getPosX()) * screenBlockWidth, (shapeRow + board.getPosY()) * screenBlockHeight, screenBlockWidth, screenBlockHeight);
             }
         }
     }
